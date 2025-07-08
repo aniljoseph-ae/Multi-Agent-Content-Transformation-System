@@ -1,3 +1,4 @@
+"""
 from pathlib import Path
 
 project_structure = {
@@ -117,7 +118,7 @@ project_structure = {
 
 
 def create_structure(base_path: Path, structure: dict):
-    """Recursively create directory structure and files."""
+  # Recursively create directory structure and files.
     for name, content in structure.items():
         path = base_path / name
         if content is None:
@@ -132,5 +133,76 @@ def create_structure(base_path: Path, structure: dict):
 
 if __name__ == "__main__":
     root = Path(__file__).resolve().parent
+    print(f"Creating project structure in: {root}")
+    create_structure(root, project_structure)
+"""
+
+# New structure:
+
+
+from pathlib import Path
+
+project_structure = {
+    "app": {
+        "__init__.py": None,
+        "main.py": None,
+        "api": {
+            "__init__.py": None,
+            "endpoints.py": None
+        },
+        "agents": {
+            "__init__.py": None,
+            "style_analysis.py": None,
+            "transformation_planning.py": None,
+            "content_conversion.py": None,
+            "quality_control.py": None,
+            "workflow.py": None
+        },
+        "rag": {
+            "__init__.py": None,
+            "knowledge_base.py": None,
+            "retriever.py": None
+        },
+        "models": {
+            "__init__.py": None,
+            "schemas.py": None
+        },
+        "utils": {
+            "__init__.py": None,
+            "config.py": None,
+            "llm.py": None
+        },
+        "tests": {
+            "__init__.py": None,
+            "test_endpoints.py": None,
+            "test_agents.py": None
+        }
+    },
+    "data": {
+        "style_guides.json": None,
+        "transformation_examples.json": None
+    },
+    "requirements.txt": None,
+    "README.md": None,
+    "docker-compose.yml": None,
+    ".env": None
+}
+
+def create_structure(base_path: Path, structure: dict):
+    """Recursively create directory structure and files."""
+    for name, content in structure.items():
+        path = base_path / name
+        if content is None:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.touch(exist_ok=True)
+            print(f"Created file: {path}")
+        else:
+            path.mkdir(parents=True, exist_ok=True)
+            print(f"Created directory: {path}")
+            create_structure(path, content)
+
+if __name__ == "__main__":
+    root = Path(__file__).resolve().parent 
+    root.mkdir(parents=True, exist_ok=True)
     print(f"Creating project structure in: {root}")
     create_structure(root, project_structure)
