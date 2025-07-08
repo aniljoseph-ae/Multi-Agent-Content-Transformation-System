@@ -1,3 +1,6 @@
+"""
+Configuration management with environment variables
+"""
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):

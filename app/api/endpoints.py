@@ -1,12 +1,15 @@
+"""
+API endpoints for content transformation requests
+"""
 from fastapi import APIRouter, HTTPException
-from app.agents import run_transformation_workflow
+from app.agents.workflow import run_transformation_workflow 
 from app.models.schemas import TransformRequest, TransformResponse
 from app.utils.llm import UltraSafeClient
 
 router = APIRouter()
 
 @router.post(
-    "/transform", 
+    "/transform",
     response_model=TransformResponse,
     summary="Transform content to target style/format",
     description="Endpoint for content transformation using multi-agent system"
@@ -34,6 +37,6 @@ async def transform_content(request: TransformRequest):
         )
     except Exception as e:
         raise HTTPException(
-            status_code=500, 
+            status_code=500,
             detail=f"Transformation failed: {str(e)}"
         )

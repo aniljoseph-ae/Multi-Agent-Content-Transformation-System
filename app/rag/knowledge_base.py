@@ -1,3 +1,6 @@
+"""
+ChromaDB vector store for style guides and examples
+"""
 import chromadb
 import json
 import os
@@ -58,7 +61,7 @@ class KnowledgeBase:
             documents=[d["content"] for d in documents],
             ids=ids
         )
-        print(f"Loaded {len(documents)} documents into knowledge base")
+        print(f"📚 Loaded {len(documents)} documents into knowledge base")
 
 # Global initialization function
 async def initialize_knowledge_base():

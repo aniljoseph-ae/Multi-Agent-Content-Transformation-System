@@ -1,11 +1,12 @@
+"""
+Coordinates agents using LangGraph workflow
+"""
 from langgraph.graph import StateGraph, END
-from typing import TypedDict, Any, List, Dict
-from app.agents import (
-    StyleAnalysisAgent,
-    TransformationPlanningAgent,
-    ContentConversionAgent,
-    QualityControlAgent
-)
+from typing import TypedDict, Any
+from .style_analysis import StyleAnalysisAgent
+from .transformation_plan import TransformationPlanningAgent
+from .content_converter import ContentConversionAgent
+from .quality_control import QualityControlAgent
 
 # Define workflow state
 class TransformationState(TypedDict):

@@ -1,3 +1,6 @@
+"""
+Retrieves relevant style guidance using RAG
+"""
 import chromadb
 from app.utils.llm import UltraSafeClient
 from app.utils.config import get_settings

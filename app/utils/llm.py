@@ -1,3 +1,6 @@
+"""
+Client for UltraSafe APIs (OpenAI-compatible)
+"""
 from openai import AsyncOpenAI
 from app.utils.config import get_settings
 from typing import List, Dict, Any
